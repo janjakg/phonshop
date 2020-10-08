@@ -4,8 +4,14 @@
     <body>
       <div class="phones">
         <h3>{{ name }}</h3>
-        <img class="menu-item__image" :src="image.source" :alt="image.alt"  />
+        <img class="menu-item__image" :src="image.source" :alt="image.alt" />
         <p>{{ price }}$</p>
+        <div>
+          <label for="add-item-quantity">Quantité :</label>
+          <input v-model.number="quantity" id="add-item-quantity" type="number">
+          <button @click="addToShoppingCart(quantity)">Ajouter au panier</button>
+        </div>
+
       </div>
     </body>
   </div>
@@ -14,20 +20,17 @@
 <script>
   export default {
     name: 'PhoneList',
-    props: ["image", "name","price"]
+    props: ["image", "name", "price", "quantity", "addToShoppingCart"]
   }
 </script>
 
 <style scoped>
   .phones {
- 
     width: 500px;
   }
 
   .phonelist {
-    box-sizing: border-box;
     display: inline-block;
-    flex-direction: row;
   }
 
   .menu-item__image {
