@@ -5,12 +5,18 @@
     </nav>
     <h1>PHONESHOP</h1>
     <header>Slider</header>
+
     <h2>
       <div class="title">Nos téléphones :</div>
     </h2>
+   
     <div class="cellPhones">
-      <PhoneList v-for="item in phonelisting" :name="item.name" :image="item.image" :price="item.price"
+      <PhoneList v-for="item in phonelisting" :addToShoppingCart="addToShoppingCart" :name="item.name"
+        :image="item.image" :price="item.price" :quantity="item.quantity" :shoppinCart="item.shoppinCart"
         :key="item.name" />
+    </div>
+    <div class="shoppinCart">
+ <aside class="shopping-cart">Votre panier d'achat :{{ shoppinCart }}téléphone(s)</aside>
     </div>
   </div>
 </template>
@@ -27,10 +33,12 @@
         phonelisting: [{
             name: "Galaxy A20",
             price: 300,
+            shoppinCart: 0,
             image: {
               source: "./images/galaxyA20.jpg",
               alt: "galaxy A20",
-            }
+            },
+            quantity: 1
           },
           {
             name: "Galaxy Flip",
@@ -38,7 +46,8 @@
             image: {
               source: "./images/galaxyFlip.jpg",
               alt: "galaxy Flip",
-            }
+            },
+            quantity: 1
           },
           {
             name: "Galaxy S9",
@@ -46,7 +55,8 @@
             image: {
               source: "./images/galaxyS9.jpg",
               alt: "galaxy S9",
-            }
+            },
+            quantity: 1
           },
           {
             name: "Galaxy S20",
@@ -54,7 +64,8 @@
             image: {
               source: "./images/galaxyS20.jpeg",
               alt: "galaxy S20",
-            }
+            },
+            quantity: 1
           },
           {
             name: "Iphone 11",
@@ -62,7 +73,8 @@
             image: {
               source: "./images/Iphone11.jpg",
               alt: "Iphone11",
-            }
+            },
+            quantity: 1
           },
           {
             name: "IphoneSe",
@@ -70,7 +82,8 @@
             image: {
               source: "./images/IphoneSe.jpg",
               alt: "IphoneSe",
-            }
+            },
+            quantity: 1
           },
           {
             name: "IphoneXr",
@@ -78,7 +91,8 @@
             image: {
               source: "./images/IphoneXr.jpg",
               alt: "IphoneXr",
-            }
+            },
+            quantity: 1
           },
           {
             name: "SonyXperiaZ1",
@@ -86,7 +100,8 @@
             image: {
               source: "./images/SonyXperiaZ1.jpg",
               alt: "SonyXperiaZ1",
-            }
+            },
+            quantity: 1
           },
           {
             name: "XiaomiRedmi9S",
@@ -94,11 +109,18 @@
             image: {
               source: "./images/XiaomiRedmi9S.jpg",
               alt: "XiaomiRedmi9S",
-            }
+            },
+            quantity: 1
           },
         ]
       }
-    }
+    },
+	methods: {
+		addToShoppingCart(amount) {
+			this.shoppingCart += amount
+		}
+	}
+
   }
 </script>
 
@@ -111,10 +133,13 @@
     color: #2c3e50;
     margin-top: 60px;
   }
-  .cellPhones{
-    border:1px solid red;
+
+  .cellPhones, .shopping-cart {
+    border: 1px solid red;
+    margin: 5px;
   }
-  .title{
+   
+  .title {
     text-align: left;
   }
 </style>
