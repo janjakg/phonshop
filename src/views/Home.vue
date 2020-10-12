@@ -9,15 +9,21 @@
     <h2>
       <div class="title">Nos téléphones :</div>
     </h2>
-   
-    <div class="cellPhones">
-      <PhoneList v-for="item in phonelisting" :addToShoppingCart="addToShoppingCart" :name="item.name"
-        :image="item.image" :price="item.price" :quantity="item.quantity" :shoppinCart="item.shoppinCart"
-        :key="item.name" />
+
+    <div class="container">
+
+      <div class="cellPhones">
+        <PhoneList v-for="item in phonelisting" @add-items-to-cart="addToShoppingCart" :name="item.name"
+          :image="item.image" :price="item.price" :quantity="item.quantity" :shoppinCart="item.shoppinCart"
+          :key="item.name" />
+      </div>
+
+      <div class="shoppinCart">
+        <aside class="shopping-cart">Votre panier d'achat :{{ shoppinCart }} téléphone(s)</aside>
+      </div>
+
     </div>
-    <div class="shoppinCart">
- <aside class="shopping-cart">Votre panier d'achat :{{ shoppinCart }}téléphone(s)</aside>
-    </div>
+
   </div>
 </template>
 
@@ -30,15 +36,15 @@
     },
     data() {
       return {
+        shoppinCart: 0,
         phonelisting: [{
             name: "Galaxy A20",
             price: 300,
-            shoppinCart: 0,
             image: {
               source: "./images/galaxyA20.jpg",
               alt: "galaxy A20",
             },
-            quantity: 1
+            quantity: 1,
           },
           {
             name: "Galaxy Flip",
@@ -115,11 +121,11 @@
         ]
       }
     },
-	methods: {
-		addToShoppingCart(amount) {
-			this.shoppingCart += amount
-		}
-	}
+    methods: {
+      addToShoppingCart(amount) {
+        this.shoppingCart += amount
+      }
+    }
 
   }
 </script>
@@ -134,11 +140,21 @@
     margin-top: 60px;
   }
 
-  .cellPhones, .shopping-cart {
-    border: 1px solid red;
-    margin: 5px;
+  .container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    /* grid-template: auto 1fr auto/auto 1fr auto;*/
+
   }
-   
+
+  .cellPhones,
+  .shopping-cart {
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+  }
+
   .title {
     text-align: left;
   }
