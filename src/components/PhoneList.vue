@@ -9,7 +9,7 @@
         <div>
           <label for="add-item-quantity">Quantité :</label>
           <input v-model.number="quantity" id="add-item-quantity" type="number">
-          <button @click="updateShoppingCart(quantity)">Ajouter au panier</button>
+          <BaseButton @click="updateShoppingCart(quantity)">Ajouter au panier</BaseButton>
         </div>
 
       </div>
@@ -18,8 +18,15 @@
 </template>
 
 <script>
+import BaseButton from "./BaseButton"
+import {mapActions} from 'vuex'
   export default {
     name: 'PhoneList',
+
+    components: {
+      BaseButton
+    },
+
     props: {
       image: {
         type: Object,
@@ -40,10 +47,8 @@
      
     },
     methods:{
-      updateShoppingCart(quantity){
-        this.$emit('add-items-to-cart',quantity )
-      }
-    }
+     ...mapActions(["updateShoppingCart"])
+      }   
 
   }
 </script>
