@@ -13,13 +13,13 @@
     <div class="container">
 
       <div class="cellPhones">
-        <PhoneList v-for="item in phonelisting" @add-items-to-cart="addToShoppingCart" :name="item.name"
-          :image="item.image" :price="item.price" :quantity="item.quantity" :shoppinCart="item.shoppinCart"
+        <PhoneList v-for="item in phonelisting"  :name="item.name"
+          :image="item.image" :price="item.price" :quantity="item.quantity" :shoppingCart="item.shoppingCart"
           :key="item.name" />
       </div>
 
-      <div class="shoppinCart">
-        <aside class="shopping-cart">Votre panier d'achat :{{ shoppinCart }} téléphone(s)</aside>
+      <div class="shoppingCart">
+        <aside class="shopping-cart">Votre panier d'achat :{{ shoppingCart }} téléphone(s)</aside>
       </div>
 
     </div>
@@ -29,103 +29,26 @@
 
 <script>
   import PhoneList from '@/components/PhoneList.vue'
+  import {mapState} from 'vuex'
   export default {
     name: 'Home',
     components: {
       PhoneList
     },
-    data() {
-      return {
-        shoppinCart: 0,
-        phonelisting: [{
-            name: "Galaxy A20",
-            price: 300,
-            image: {
-              source: "./images/galaxyA20.jpg",
-              alt: "galaxy A20",
-            },
-            quantity: 1,
-          },
-          {
-            name: "Galaxy Flip",
-            price: 500,
-            image: {
-              source: "./images/galaxyFlip.jpg",
-              alt: "galaxy Flip",
-            },
-            quantity: 1
-          },
-          {
-            name: "Galaxy S9",
-            price: 450,
-            image: {
-              source: "./images/galaxyS9.jpg",
-              alt: "galaxy S9",
-            },
-            quantity: 1
-          },
-          {
-            name: "Galaxy S20",
-            price: 900,
-            image: {
-              source: "./images/galaxyS20.jpeg",
-              alt: "galaxy S20",
-            },
-            quantity: 1
-          },
-          {
-            name: "Iphone 11",
-            price: 850,
-            image: {
-              source: "./images/Iphone11.jpg",
-              alt: "Iphone11",
-            },
-            quantity: 1
-          },
-          {
-            name: "IphoneSe",
-            price: 880,
-            image: {
-              source: "./images/IphoneSe.jpg",
-              alt: "IphoneSe",
-            },
-            quantity: 1
-          },
-          {
-            name: "IphoneXr",
-            price: 770,
-            image: {
-              source: "./images/IphoneXr.jpg",
-              alt: "IphoneXr",
-            },
-            quantity: 1
-          },
-          {
-            name: "SonyXperiaZ1",
-            price: 680,
-            image: {
-              source: "./images/SonyXperiaZ1.jpg",
-              alt: "SonyXperiaZ1",
-            },
-            quantity: 1
-          },
-          {
-            name: "XiaomiRedmi9S",
-            price: 590,
-            image: {
-              source: "./images/XiaomiRedmi9S.jpg",
-              alt: "XiaomiRedmi9S",
-            },
-            quantity: 1
-          },
-        ]
-      }
+    
+    computed: {
+      ...mapState({
+        shoppingCart:'shoppingCart',
+        phonelisting:'phonelisting'
+
+      })
     },
-    methods: {
+       
+   /* methods: {
       addToShoppingCart(amount) {
         this.shoppingCart += amount
       }
-    }
+    }*/
 
   }
 </script>
