@@ -98,7 +98,7 @@ export default new Vuex.Store({
     },
     actions: {
         updateShoppingCart({ commit }, amount) {
-            commit('ADD_ITEM_TO_SHOPPING_CART', amount)
+            commit('ADD_ITEMS_TO_SHOPPING_CART', amount)
         }
     },
     modules: {}
