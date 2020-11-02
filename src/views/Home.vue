@@ -1,8 +1,5 @@
 <template>
-  <div class="home">
-    <nav>
-      <h4>Navbar</h4>
-    </nav>
+  <div class="home">    
     <h1>PHONESHOP</h1>
     <header>Slider</header>
 
@@ -11,17 +8,15 @@
     </h2>
 
     <div class="container">
-
       <div class="cellPhones">
         <PhoneList v-for="item in phonelisting"  :name="item.name"
-          :image="item.image" :price="item.price" :quantity="item.quantity" :shoppingCart="item.shoppingCart"
+          :image="item.image" :price="item.price" :quantity="item.quantity" :shoppingCart="item.shoppingCart"          
           :key="item.name" />
       </div>
 
       <div class="shoppingCart">
-        <aside class="shopping-cart">Votre panier d'achat :{{ shoppingCart }} téléphone(s)</aside>
+        <aside class="shopping-cart">Votre panier d'achat :{{ shoppingCart }} téléphone(s)</aside>               
       </div>
-
     </div>
 
   </div>
@@ -44,13 +39,7 @@
       })
     },
        
-   /* methods: {
-      addToShoppingCart(amount) {
-        this.shoppingCart += amount
-      }
-    }*/
-
-  }
+   }
 </script>
 
 <style lang="scss">
