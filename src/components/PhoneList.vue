@@ -4,12 +4,14 @@
     <body>
       <div class="phones">
         <h3>{{ name }}</h3>
-        <img class="menu-item__image" :src="image.source" :alt="image.alt" />
+        <router-link to="/detail"><img class="menu-item__image" :src="image.source" :alt="image.alt" /></router-link>
+        <router-view/>
         <p>{{ price }}$</p>
         <div>
-          <label for="add-item-quantity">Quantité :</label>
+          <label for="add-item-quantity">Quantité : {{ quantity }}</label>
           <input v-model.number="quantity" id="add-item-quantity" type="number">
-          <BaseButton @click="updateShoppingCart(quantity)">Ajouter au panier</BaseButton>
+          <BaseButton @click="updateShoppingCart(quantity)" class="test">Ajouter au panier</BaseButton>
+   
         </div>
 
       </div>
@@ -18,8 +20,8 @@
 </template>
 
 <script>
-import BaseButton from "./BaseButton"
 import {mapActions} from 'vuex'
+import BaseButton from "./BaseButton"
   export default {
     name: 'PhoneList',
 
