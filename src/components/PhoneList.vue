@@ -8,7 +8,7 @@
         <router-view/>
         <p>{{ price }}$</p>
         <div>
-          <label for="add-item-quantity">Quantité : {{ quantity }}</label>
+          <label for="add-item-quantity">Quantité :</label>
           <input v-model.number="quantity" id="add-item-quantity" type="number">
           <BaseButton @click="updateShoppingCart(quantity)" class="test">Ajouter au panier</BaseButton>
    
