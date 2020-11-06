@@ -4,7 +4,7 @@
     <body>
       <div class="phones">
         <h3>{{ name }}</h3>
-        <router-link to="/detail"><img class="menu-item__image" :src="image.source" :alt="image.alt" /></router-link>
+        <router-link to="/detail"> <div class="pictureBox"><img class="menu-item__image" :src="image.source" :alt="image.alt" /></div></router-link>
         <router-view/>
         <p>{{ price }}$</p>
         <div>
@@ -65,8 +65,16 @@ import BaseButton from "./BaseButton"
   }
 
   .menu-item__image {
-    width: 150px;
-    height: 200px;
-    border: 1px solid black;
+    width: 150px;   
+   
+  }
+  .pictureBox{
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    width: 500px;
+    height: 320px;
+    border: 1px solid black; 
+
   }
 </style>
